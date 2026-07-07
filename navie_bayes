@@ -1,0 +1,36 @@
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder
+from sklearn.naive_bayes import CategoricalNB
+
+data = {
+    "snack": ["burger","noodles","pizza","burger","pizza","burger",
+              "noodles","noodles","pizza","noodles","noodles","noodles",
+              "pizza","pizza","noodles"],
+    "purchase": ["yes","no","yes","yes","yes","no",
+                 "no","yes","no","yes","no","no",
+                 "yes","yes","no"]
+}
+
+df = pd.DataFrame(data)
+
+le_snack = LabelEncoder()
+le_purchase = LabelEncoder()
+
+df["snack_encoded"] = le_snack.fit_transform(df["snack"])
+df["purchase_encoded"] = le_purchase.fit_transform(df["purchase"])
+
+X = df[["snack_encoded"]]   # keep as DataFrame
+y = df["purchase_encoded"]
+
+model = CategoricalNB()
+model.fit(X, y)
+
+snack_input = "pizza"
+encoded_input = le_snack.transform([snack_input])
+
+input_df = pd.DataFrame(encoded_input, columns=["snack_encoded"])
+
+prediction = model.predict(input_df)
+result = le_purchase.inverse_transform(prediction)
+
+print("Prediction for", snack_input, ":", result[0])
