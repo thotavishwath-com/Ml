@@ -1,0 +1,31 @@
+##from Iris dataset take any one feature and draw plot for histogram and boxplot which mentions about mean median and mode##
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy import stats
+data = pd.read_csv(r"C:/Users/BDALAB-7/Downloads/iris dataset/iris.csv")
+feature = data["sepal_length"]
+mean_val = np.mean(feature)
+median_val = np.median(feature)
+mode_val = stats.mode(feature)[0][0]
+print("Mean:", mean_val)
+print("Median:", median_val)
+print("Mode:", mode_val)
+plt.figure()
+plt.hist(feature)
+plt.axvline(mean_val)
+plt.axvline(median_val)
+plt.axvline(mode_val)
+plt.title("Histogram of Sepal Length")
+plt.xlabel("Sepal Length")
+plt.ylabel("Frequency")
+plt.show()
+plt.figure()
+plt.boxplot(feature, vert=False)
+plt.axvline(mean_val)
+plt.axvline(median_val)
+plt.axvline(mode_val)
+plt.title("Boxplot of Sepal Length")
+plt.xlabel("Sepal Length")
+plt.show()
