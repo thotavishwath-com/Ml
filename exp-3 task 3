@@ -1,0 +1,12 @@
+## plot a boxplot using matplotlib to detect outliers##
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data = pd.read_csv(r"C:/Users/BDALAB-7/Downloads/iris dataset/iris.csv")
+
+plt.figure()
+plt.boxplot(data["sepal_length"])
+plt.title("Boxplot of Sepal Length")
+plt.xlabel("Sepal Length")
+plt.show()
