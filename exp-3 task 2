@@ -1,0 +1,35 @@
+##draw histogram for each feature using matplotlib##
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data = pd.read_csv(r"C:/Users/BDALAB-7/Downloads/iris dataset/iris.csv")
+
+plt.figure()
+plt.hist(data["sepal_length"])
+plt.title("Histogram of Sepal Length")
+plt.xlabel("Sepal Length")
+plt.ylabel("Frequency")
+plt.show()
+
+plt.figure()
+plt.hist(data["sepal_width"])
+plt.title("Histogram of Sepal Width")
+plt.xlabel("Sepal Width")
+plt.ylabel("Frequency")
+plt.show()
+
+plt.figure()
+plt.hist(data["petal_length"])
+plt.title("Histogram of Petal Length")
+plt.xlabel("Petal Length")
+plt.ylabel("Frequency")
+plt.show()
+
+plt.figure()
+plt.hist(data["petal_width"])
+plt.title("Histogram of Petal Width")
+plt.xlabel("Petal Width")
+plt.ylabel("Frequency")
+plt.show()
